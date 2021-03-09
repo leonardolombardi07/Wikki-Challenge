@@ -1,21 +1,23 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import { store } from './app/store';
-import { Provider } from 'react-redux';
-import * as serviceWorker from './serviceWorker';
+import React from "react";
+import ReactDOM from "react-dom";
+// Components
+import { StylesProvider } from "./styles/StylesProvider";
+import { Router } from "./routes";
+// Redux
+import { Provider as ReduxProvider } from "react-redux";
+import { AuthorizationProvider } from "./authorization";
+import { store } from "./redux/store";
+// Dev Tools
+import LogRocket from "logrocket";
 
+LogRocket.init("pbvwcs/carlexdev");
 ReactDOM.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
-  </React.StrictMode>,
-  document.getElementById('root')
+  <ReduxProvider store={store}>
+    <AuthorizationProvider>
+      <StylesProvider>
+        <Router />
+      </StylesProvider>
+    </AuthorizationProvider>
+  </ReduxProvider>,
+  document.getElementById("root")
 );
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
