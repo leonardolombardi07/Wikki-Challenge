@@ -6,11 +6,7 @@ import { useLocationChange } from "../../../routes";
 import { useSearchProducts } from "../useSearchProducts";
 
 export const SearchProductsInput: React.FC = () => {
-  const {
-    resetSearchQuery,
-    searchQuery,
-    searchProducts,
-  } = useSearchProducts();
+  const { resetSearchQuery, searchQuery, searchProducts } = useSearchProducts();
 
   useLocationChange({
     cleanup: () => resetSearchQuery(),

@@ -19,5 +19,7 @@ export const useLocationChange = (actions: LocationChangeArgs) => {
         actions.cleanup(location);
       }
     };
-  }, [location, actions]);
+    // Including actions makes the hook run everytime
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [location]);
 };
